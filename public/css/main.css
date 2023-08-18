@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+  font-family: "Arvo";
+}
+
+:root {
+  --primary: #800000;
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.mankementje-park-locatie {
+  font-size: 1rem;
+  color: #a1a1a1;
+}
+
+.mankementje-titel {
+  font-size: 1.5rem;
+  color: #000000;
+}
+
+.mankementje-datum {
+  font-size: 1.15rem;
+  color: #000000;
+}
+
+.mankementje-stat {
+  font-size: 2rem;
+  color: #000000;
+}
+
+.row .mankementje-stats {
+  margin-top: 1.5rem;
+}
