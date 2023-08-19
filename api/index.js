@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 });
 
 // Get all mankementjes
-app.get("/mankementjes/all", (req, res) => {
+app.get("/mankementjes", (req, res) => {
 
   db.all(`SELECT * FROM mankementje`, [], (err, rows) => {
     if (err) throw err;

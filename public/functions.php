@@ -38,7 +38,7 @@ function getMankementjes() {
     global $API_URL;
     $mankementjes = array();
 
-    $json = file_get_contents($API_URL . "/mankementjes/all");
+    $json = file_get_contents($API_URL . "/mankementjes");
     $obj = json_decode($json);
 
     foreach($obj as $mankement) {
