@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+
+* {
+  font-family: "Arvo";
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #800000;
+}
+
+.primary {
+  color: var(--primary);
+}
+
+div.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.ta-c {
+  text-align: center;
+}
+
+a.gh-button {
+  font-size: 2rem;
+  color: black;
+  transition: 0.2s;
+}
+
+a.gh-button:hover {
+  color: var(--primary);
+}
