@@ -14,6 +14,8 @@
     $date = $mankementje->date;
     $user = $mankementje->username;
 
+    $status = $mankementje->status;
+
     $commentsArray = $mankementje->comments;
     $comments = "";
 
@@ -62,7 +64,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-md-6">
                 <img class="img-fluid rounded mb-2" src="<?php echo $image; ?>">
                 <h2><?php echo $title; ?></h2>
                 <span class="mankementje-datum">Gemeld op <?php echo $date; ?> door <?php echo $user; ?></span>
@@ -70,9 +72,12 @@
                     <?php echo $description; ?>
                 </p>
             </div>
-            <div class="col-12 col-md-4 ps-md-5">
-                <a class="btn btn-success"><i class="bi bi-check"></i>&nbsp;Dit is opgelost!</a> <a
-                    class="btn btn-danger"><i class="bi bi-exclamation-triangle-fill"></i>&nbsp;Rapporteer</a>
+            <div class="col-12 col-md-6 ps-md-5">
+                <?php if($status == 'open') {
+                    echo "<a class='btn btn-success'><i class='bi bi-check'></i>&nbsp;Dit is opgelost!</a>";
+                    echo "<a class='btn btn-danger'><i class='bi bi-exclamation-triangle-fill'></i>&nbsp;Rapporteer</a>";
+                }
+                    ?>
                 <h2 class="mt-3">Reacties</h2>
 
                 <?php echo $comments; ?>

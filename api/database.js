@@ -101,8 +101,16 @@ connection.run(`
 // INSERT INTO section VALUES ('Gebouw', 'Joris en de Draak', 'Efteling');
 // `);
 
-// connection.run(`INSERT INTO mankementje VALUES (1, 'japser', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Joris_en_de_Draak_-_Dragon.JPG/1280px-Joris_en_de_Draak_-_Dragon.JPG', 'Lampje kapot', 'Lampje kapot bij de colamachine', 'open', 'Efteling', 'Joris en de Draak', 'Wachtrij', '2023-08-18', null);`)
+// connection.run(
+//   `INSERT INTO mankementje VALUES (1, 'japser', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Joris_en_de_Draak_-_Dragon.JPG/1280px-Joris_en_de_Draak_-_Dragon.JPG', 'Lampje kapot', 'Lampje kapot bij de colamachine', 'open', 'Efteling', 'Joris en de Draak', 'Wachtrij', '2023-08-18', null);`
+// );
 
-// connection.run(`INSERT INTO comment VALUES (1,1, 'japser', 'Dit lampje is weer gemaakt!', '2023-08-18', 'public');`)
+// connection.run(
+//   `INSERT INTO mankementje VALUES (2, 'japser', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Joris_en_de_Draak_-_Dragon.JPG/1280px-Joris_en_de_Draak_-_Dragon.JPG', 'Hek kapot', 'Hek bij invalideningang Baron is kapot', 'resolved', 'Efteling', 'Baron 1898', 'Invalideningang', '2023-08-17', '2023-08-18');`
+// );
+
+// connection.run(
+//   `INSERT INTO comment VALUES (1,1, 'japser', 'Dit lampje is weer gemaakt!', '2023-08-18', 'public');`
+// );
 
 module.exports = connection;

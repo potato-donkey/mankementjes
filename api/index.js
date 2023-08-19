@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 
 // Get all mankementjes
 app.get("/mankementjes", (req, res) => {
-  db.all(`SELECT * FROM mankementje`, [], (err, rows) => {
+  db.all(`SELECT * FROM mankementje WHERE status = 'open'`, [], (err, rows) => {
     if (err) throw err;
 
     const mankementjes = [];
@@ -87,6 +87,41 @@ app.get("/mankementjes", (req, res) => {
   });
 });
 
+app.get("/mankementjes/archief", (req, res) => {
+  db.all(
+    `SELECT * FROM mankementje WHERE status = 'resolved'`,
+    [],
+    (err, rows) => {
+      if (err) throw err;
+
+      const mankementjes = [];
+      let counter = 0;
+
+      rows.forEach((row) => {
+        db.all(
+          `SELECT * FROM comment WHERE mankementje = ?`,
+          [row.id],
+          (err, comments) => {
+            if (err) throw err;
+            row.comments = [];
+            row.date = moment(row.date).format("D-MM-YYYY");
+
+            comments.forEach((comment) => {
+              row.comments.push(comment);
+            });
+
+            mankementjes.push(row);
+            counter++;
+            if (counter == rows.length) {
+              res.send(mankementjes);
+            }
+          }
+        );
+      });
+    }
+  );
+});
+
 // Get mankementje by id
 app.get("/mankementjes/:id", (req, res) => {
   const id = req.params.id;
@@ -100,8 +135,6 @@ app.get("/mankementjes/:id", (req, res) => {
       (err, comments) => {
         if (err) throw err;
         row.comments = [];
-
-        console.log(row.date);
 
         row.date = moment(row.date).format("D-MM-YYYY");
 

@@ -34,11 +34,25 @@ return $mankement;
 }
 
 
-function getMankementjes() {
+function getMankementjes() { // Get all open mankementjes
     global $API_URL;
     $mankementjes = array();
 
     $json = file_get_contents($API_URL . "/mankementjes");
+    $obj = json_decode($json);
+
+    foreach($obj as $mankement) {
+        $mankementjes[] = $mankement;
+    }
+
+    return $mankementjes;
+}
+
+function getArchivedMankementjes() {
+    global $API_URL;
+    $mankementjes = array();
+
+    $json = file_get_contents($API_URL . "/mankementjes/archief");
     $obj = json_decode($json);
 
     foreach($obj as $mankement) {
