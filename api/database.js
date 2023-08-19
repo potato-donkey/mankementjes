@@ -1,9 +1,9 @@
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require("sqlite3").verbose();
 
-let connection = new sqlite3.Database("./db/mankementjes.db", err => {
-    if (err) return console.error(err.message);
+let connection = new sqlite3.Database("./db/mankementjes.db", (err) => {
+  if (err) return console.error(err.message);
 
-    console.log("Connected to file database");
+  console.log("Connected to file database");
 });
 
 // Create mankementje table
@@ -18,9 +18,10 @@ CREATE TABLE IF NOT EXISTS mankementje (
     park TEXT,
     location TEXT,
     section TEXT,
-    date TEXT
+    date TEXT,
+    solved TEXT
 );
-`)
+`);
 
 // Create comment table
 connection.run(`
@@ -29,7 +30,8 @@ CREATE TABLE IF NOT EXISTS comment (
     mankementje INTEGER,
     username TEXT,
     content TEXT,
-    date TEXT
+    date TEXT,
+    status TEXT
 );
 `);
 
@@ -99,8 +101,8 @@ connection.run(`
 // INSERT INTO section VALUES ('Gebouw', 'Joris en de Draak', 'Efteling');
 // `);
 
-// connection.run(`INSERT INTO mankementje VALUES (1, 'japser', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Joris_en_de_Draak_-_Dragon.JPG/1280px-Joris_en_de_Draak_-_Dragon.JPG', 'Lampje kapot', 'Lampje kapot bij de colamachine', 'open', 'Efteling', 'Joris en de Draak', 'Wachtrij', '2023-08-18');`)
+// connection.run(`INSERT INTO mankementje VALUES (1, 'japser', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Joris_en_de_Draak_-_Dragon.JPG/1280px-Joris_en_de_Draak_-_Dragon.JPG', 'Lampje kapot', 'Lampje kapot bij de colamachine', 'open', 'Efteling', 'Joris en de Draak', 'Wachtrij', '2023-08-18', null);`)
 
-// connection.run(`INSERT INTO comment VALUES (1,1, 'japser', 'Dit lampje is weer gemaakt!', '2023-08-18');`)
+// connection.run(`INSERT INTO comment VALUES (1,1, 'japser', 'Dit lampje is weer gemaakt!', '2023-08-18', 'public');`)
 
 module.exports = connection;

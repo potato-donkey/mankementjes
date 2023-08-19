@@ -5,4 +5,4 @@ Vooralsnog betreft dit alleen de Efteling.
 
 ## Hoe werkt het?
 
-Mankementjes werkt op een HTML, CSS, PHP en JavaScript frontend, dat gebruikmaakt van een API gebouwd met JavaScript en SQlite.
+Mankementjes werkt op een HTML, CSS, PHP en JavaScript frontend, dat gebruikmaakt van een API gebouwd met JavaScript en SQLite.
