@@ -44,6 +44,6 @@ a.gh-button:hover {
   position: absolute;
   top: 0.75em;
   right: 0.75em;
-  width: 5ex;
+  width: 10ex;
   z-index: 99;
 }
