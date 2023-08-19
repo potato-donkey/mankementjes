@@ -23,7 +23,7 @@ $mankement .= "<div class='mankementje col-12 col-md-3'>";
                 $mankement .= "<div class='col-4'>";
                     $mankement .= "</div>";
                 $mankement .= "<div class='col-4'>";
-                    $mankement .= "<a class='btn btn-primary' href='./mankementje?id=$id'>Bekijk</a>";
+                    $mankement .= "<a class='btn btn-primary' href='./mankementje.php?id=$id'>Bekijk</a>";
                     $mankement .= "</div>";
                 $mankement .= "</div>";
             $mankement .= "</div>";
@@ -46,6 +46,28 @@ function getMankementjes() {
     }
 
     return $mankementjes;
+}
+
+function getMankementje($id) {
+    global $API_URL;
+
+    $json = file_get_contents($API_URL . "/mankementjes/" . $id);
+    $mankementje = json_decode($json);
+
+    return $mankementje;
+}
+
+function renderComment($name, $date, $content, $id) {
+    $comment = "";
+    $comment .= "<div class='card'>";
+    $comment .= "<div class='card-body'>";
+    $comment .= "<h5 class='card-title'>$name</h5>";
+    $comment .= "<p class='card-text'>$content</p>";
+    $comment .= "<small>$date</small>";
+    $comment .= "</div>";
+    $comment .= "</div>";
+
+    return $comment;
 }
 
 ?>

@@ -51,7 +51,7 @@
         <div class="row row-cols-1 g-4">
             <?php echo $mankementjes; ?>
         </div>
-
+    </div>
 </body>
 
 </html>
