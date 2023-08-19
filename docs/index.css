@@ -39,3 +39,11 @@ a.gh-button {
 a.gh-button:hover {
   color: var(--primary);
 }
+
+.logo-ptdk {
+  position: absolute;
+  top: 0.75em;
+  right: 0.75em;
+  width: 5ex;
+  z-index: 99;
+}
