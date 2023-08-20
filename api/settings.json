@@ -1,0 +1,5 @@
+{
+  "dateformat": "D-MM-YYYY",
+  "dbpath": "./db/mankementjes.db",
+  "port": 3000
+}
