@@ -44,7 +44,7 @@
             <div class="col-5">
                 <h2>Inloggen</h2>
                 <form class="mb-3" method="POST" enctype="multipart/form-data"
-                    action="http://localhost:3000/user/login">
+                    action="<?php echo $API_URL; ?>/user/login">
                     <div class="mb-3">
                         <label for="usernameLogin" class="form-label">Gebruikersnaam</label>
                         <input type="text" class="form-control" name="username" id="usernameLogin" required>
@@ -64,7 +64,7 @@
             <div class="col-5">
                 <h2>Registreren</h2>
                 <form class="mb-3" method="POST" enctype="multipart/form-data"
-                    action="http://localhost:3000/user/register">
+                    action="<?php echo $API_URL; ?>/user/register">
                     <div class="mb-3">
                         <label for="usernameRegister" class="form-label">Gebruikersnaam</label>
                         <input type="text" class="form-control" name="username" id="usernameRegister" required>
@@ -72,7 +72,7 @@
                     <div class="mb-3">
                         <label for="passwordRegister" class="form-label">Wachtwoord</label>
                         <input type="password" class="form-control" name="password" id="passwordRegister" required>
-                        <div id="passwordHelp" class="form-text">Minimaal 8 tekens, waarvan 1 cijfer.</div>
+                        <div id="passwordHelp" class="form-text">Minimaal 8 tekens, waarvan minstens 1 cijfer.</div>
                     </div>
                     <div class="mb-3">
                         <label for="passwordRegisterRepeat" class="form-label">Wachtwoord herhalen</label>

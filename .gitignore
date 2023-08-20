@@ -1,2 +1,3 @@
 */node_modules
-*/mankementjes.db
+*/db/mankementjes.db
+api/logs

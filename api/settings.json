@@ -3,5 +3,6 @@
   "dbpath": "./db/mankementjes.db",
   "port": 3000,
   "mankementjesurl": "http://localhost",
-  "passwordregex": "^(?=.*\\d).{8,}$"
+  "passwordregex": "^(?=.*\\d).{8,}$",
+  "adminusername": "Beheerder"
 }

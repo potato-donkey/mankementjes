@@ -1,6 +1,7 @@
 <?php
 ini_set("allow_url_fopen", 1);
 $API_URL = "http://localhost:3000";
+$ADMIN_USERNAME = "Beheerder";
 
 // A 'mankementje' is a Dutch word for a small defect or malfunction.
 
@@ -72,6 +73,7 @@ function getMankementje($id) {
 }
 
 function renderComment($name, $date, $content, $status, $id) {
+    global $ADMIN_USERNAME;
     global $API_URL;
     if(isset($_SESSION['loggedin'])) {
         $username = $_SESSION['username'];
@@ -79,7 +81,9 @@ function renderComment($name, $date, $content, $status, $id) {
         $username = "";
     }
 
-    if($username == $name) {
+    if($ADMIN_USERNAME == $name) {
+        $displayName = "<b class='text-danger'><i class='bi bi-hammer'></i>&nbsp;$name</b>";
+    } else if($username == $name) {
         $displayName = "<b>$name</b>";
     } else {
         $displayName = $name;
@@ -94,7 +98,7 @@ function renderComment($name, $date, $content, $status, $id) {
     if($status == 'review') {
         $comment .= "<span class='text-warning'>&nbsp;&centerdot;&nbsp;In beoordeling</span>";
     }
-    if($username === $name) {
+    if($username === $name || $username === $ADMIN_USERNAME) {
         $comment .= "&nbsp;<a href='$API_URL/comment/delete/$id/$username' class='text-danger' title='Verwijder reactie'><i class='bi bi-trash3'></i></a>";
     }
     $comment .= "</div>";
@@ -198,6 +202,9 @@ function renderAlert($message) {
             break;
         case 23:
             $alert = createAlert('success', "Geregistreerd. Je kan nu inloggen."); // Successfully registered. You may now login.
+            break;
+        case 24:
+            $alert = createAlert('danger', "Nee."); // Tried to use admin username
             break;
         case 30: // 30 series is for comments
             $alert = createAlert('warning', "Reactie verwijderd."); // Comment deleted

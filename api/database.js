@@ -10,7 +10,7 @@ const saltRounds = 10;
 let connection = new sqlite3.Database(settings.dbpath, (err) => {
   if (err) return console.error(err.message);
 
-  console.log("Connected to file database");
+  console.info("Connected to file database");
 });
 
 const setup = () => {
@@ -271,6 +271,10 @@ const loginUser = (username, password, res) => {
 };
 
 const createUser = (username, password, res) => {
+  if (username == "admin")
+    return res.redirect(
+      `${settings.mankementjesurl}/auth/login.php?message=24`
+    );
   connection.get(
     `SELECT * FROM user WHERE username = ?`,
     [username],
@@ -282,7 +286,7 @@ const createUser = (username, password, res) => {
         bcrypt.genSalt(saltRounds, function (err, salt) {
           bcrypt.hash(password, salt, function (err, hash) {
             connection.run(
-              `INSERT INTO user VALUES (?, ?, ?)`,
+              `INSERT INTO user VALUES (?, ?, ?, 0)`,
               [username, hash, null],
               (err) => {
                 if (err) throw err;
@@ -299,9 +303,15 @@ const createUser = (username, password, res) => {
 };
 
 const addComment = (mankementje, username, content, res) => {
+  let status = "review";
+
+  if (username == settings.adminusername) {
+    status = "public"; // Admin comments are public by default
+  }
+
   connection.run(
     `INSERT INTO comment (mankementje, username, content, date, status) VALUES (?, ?, ?, datetime(), ?)`,
-    [parseInt(mankementje), username, content, "review"],
+    [parseInt(mankementje), username, content, status],
     (err) => {
       if (err) throw err;
       console.info(
@@ -324,8 +334,6 @@ const deleteComment = (id, username, res) => {
         if (err) throw err;
         const mankementje = row.mankementje;
         const content = row.content;
-
-        console.log(mankementje);
 
         console.info(`Comment ${id} deleted by ${username}: ${content}`);
         res.redirect(
@@ -351,53 +359,3 @@ module.exports = {
   addComment,
   deleteComment,
 };
-
-// Filling db for testing
-
-// connection.run(`
-// INSERT INTO park VALUES ('Efteling');
-// `);
-
-// connection.run(`
-// INSERT INTO location VALUES ('Vogel Rok', 'Efteling');
-// `);
-
-// connection.run(`
-// INSERT INTO section VALUES ('Wachtrij', 'Vogel Rok', 'Efteling');
-// `);
-
-// connection.run(`
-// INSERT INTO section VALUES ('Baan', 'Vogel Rok', 'Efteling');
-// `);
-
-// connection.run(`
-// INSERT INTO section VALUES ('Gebouw', 'Vogel Rok', 'Efteling');
-// `);
-
-// connection.run(`
-// INSERT INTO location VALUES ('Joris en de Draak', 'Efteling');
-// `);
-
-// connection.run(`
-// INSERT INTO section VALUES ('Wachtrij', 'Joris en de Draak', 'Efteling');
-// `);
-
-// connection.run(`
-// INSERT INTO section VALUES ('Baan', 'Joris en de Draak', 'Efteling');
-// `);
-
-// connection.run(`
-// INSERT INTO section VALUES ('Gebouw', 'Joris en de Draak', 'Efteling');
-// `);
-
-// connection.run(
-//   `INSERT INTO mankementje VALUES (1, 'japser', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Joris_en_de_Draak_-_Dragon.JPG/1280px-Joris_en_de_Draak_-_Dragon.JPG', 'Lampje kapot', 'Lampje kapot bij de colamachine', 'open', 'Efteling', 'Joris en de Draak', 'Wachtrij', '2023-08-18', null);`
-// );
-
-// connection.run(
-//   `INSERT INTO mankementje VALUES (2, 'japser4', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Joris_en_de_Draak_-_Dragon.JPG/1280px-Joris_en_de_Draak_-_Dragon.JPG', 'Hek kapot', 'Hek bij invalideningang Baron is kapot', 'resolved', 'Efteling', 'Baron 1898', 'Invalideningang', '2023-08-17', '2023-08-18');`
-// );
-
-// connection.run(
-//   `INSERT INTO comment VALUES (1,1, 'japser4', 'Dit lampje is weer gemaakt!', '2023-08-18', 'public');`
-// );

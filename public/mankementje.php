@@ -91,16 +91,22 @@
                 </p>
             </div>
             <div class="col-12 col-md-6 ps-md-5">
-                <?php if($status == 'open') {
+
+                <?php
+                if($loggedin && $status == 'open' && ($user == $_SESSION['username'] || $_SESSION['username'] == $ADMIN_USERNAME)) {
+                    echo "<a class='btn btn-danger me-2' href='$API_URL/mankementje/delete/$id' title='Verwijder dit mankementje'><i class='bi bi-trash'></i>&nbsp;Verwijderen</a>";
+                }
+                
+                if($status == 'open') {
                     echo "<a class='btn btn-success me-2' title='Markeer dit mankementje als opgelost'><i class='bi bi-check'></i>&nbsp;Dit is opgelost!</a>";
-                    echo "<a class='btn btn-danger' title='Rapporteer dit mankementje'><i class='bi bi-exclamation-triangle-fill'></i>&nbsp;Rapporteer</a>";
+                    echo "<a class='btn btn-warning' title='Rapporteer dit mankementje'><i class='bi bi-exclamation-triangle-fill'></i>&nbsp;Rapporteer</a>";
                     }
                 ?>
 
                 <?php
-                if($loggedin) { // Only let logged in users comment
+                if($loggedin && $status == 'open') { // Only let logged in users comment
                 echo "<h3 class='mt-3'>Reageren</h3>";
-                echo "<form class='mb-3' method='POST' enctype='multipart/form-data action ='http://localhost:3000/comment/add'>";
+                echo "<form class='mb-3' method='POST' enctype='multipart/form-data' action='" . $API_URL . "/comment/add'>";
                 echo "<div class='mb-3'>";
                     echo "<textarea class='form-control' name='content' id='comment' placeholder='Typ hier je reactie...' rows='2' required></textarea>";
                 echo "</div>";

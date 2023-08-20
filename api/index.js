@@ -116,5 +116,5 @@ app.get("/comment/delete/:id/:username", (req, res) => {
 });
 
 app.listen(settings.port, () =>
-  console.log(`Listening on port ${settings.port}...`)
+  console.info(`Listening on port ${settings.port}...`)
 );
