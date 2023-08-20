@@ -97,18 +97,20 @@
                     }
                 ?>
 
-                <h3 class="mt-3">Reageren</h3>
-                <form class="mb-3" method="POST" enctype="multipart/form-data"
-                    action="http://localhost:3000/comment/add">
-                    <div class="mb-3">
-                        <textarea class="form-control" name="content" id="comment" placeholder="Typ hier je reactie..."
-                            rows="2" required></textarea>
-                    </div>
-                    <input type="hidden" name="mankementje" value="<?php echo $id; ?>">
-                    <input type="hidden" name="user" value="<?php echo $_SESSION['username']; ?>">
-                    <button type="submit" class="btn btn-primary">Plaats reactie</button>
-                    <h2 class="mt-3">Reacties</h2>
-                    <?php echo $comments; ?>
+                <?php
+                if($loggedin) { // Only let logged in users comment
+                echo "<h3 class='mt-3'>Reageren</h3>";
+                echo "<form class='mb-3' method='POST' enctype='multipart/form-data action ='http://localhost:3000/comment/add'>";
+                echo "<div class='mb-3'>";
+                    echo "<textarea class='form-control' name='content' id='comment' placeholder='Typ hier je reactie...' rows='2' required></textarea>";
+                echo "</div>";
+                echo "<input type='hidden' name='mankementje' value='$id'>";
+                echo "<input type='hidden' name='user' value='" . $_SESSION['username'] . "'>";
+                echo "<button type='submit' class='btn btn-primary'>Plaats reactie</button>";
+                }
+                ?>
+                <h2 class="mt-3">Reacties</h2>
+                <?php echo $comments; ?>
             </div>
         </div>
 

@@ -2,6 +2,6 @@
   "dateformat": "D-MM-YYYY",
   "dbpath": "./db/mankementjes.db",
   "port": 3000,
-  "mankementjesurl": "http://localhost:8000",
+  "mankementjesurl": "http://localhost",
   "passwordregex": "^(?=.*\\d).{8,}$"
 }
