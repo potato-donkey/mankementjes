@@ -1,6 +1,14 @@
 <?php
     require_once "./functions.php";
 
+    session_start();
+
+    if(isset($_SESSION['loggedin'])) {
+        $loggedin = $_SESSION['loggedin'];
+    } else {
+        $loggedin = false;
+    }
+
     $mankementjes = "";
 
     $mankementjesArray = getArchivedMankementjes();
@@ -12,6 +20,13 @@
     if(count($mankementjesArray) == 0) {
         $mankementjes = "<div class='col-12'><p>Er zijn nog geen mankementjes gemeld.</p></div>";
     }
+
+    // Getting the alert
+    if(isset($_GET['message'])) {
+        $alert = $_GET['message'];
+    } else {
+        $alert = 0;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -20,33 +35,24 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mankementjes</title>
+    <title>Archief | Mankementjes</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/main.css">
     <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/main.js"></script>
 </head>
 
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a href="./index.php" class="navbar-brand primary"><i class="bi bi-tools"></i>&nbsp;Mankementjes</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
-                    class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a href="./archief.php" class="nav-link">Archief</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php echo renderNavbar($loggedin); ?>
+    <!-- Render the navbar using the renderNavbar function from functions.php -->
 
     <div class="container mt-5 pt-4">
+        <?php echo renderAlert($alert); ?>
         <h2>Gearchiveerde mankementjes</h2>
         <div class="row row-cols-1 g-4">
             <?php echo $mankementjes; ?>

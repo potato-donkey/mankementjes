@@ -1,6 +1,14 @@
 <?php
     require_once "./functions.php";
 
+    session_start();
+
+    if(isset($_SESSION['loggedin'])) {
+        $loggedin = $_SESSION['loggedin'];
+    } else {
+        $loggedin = false;
+    }
+
     $id = $_GET['id'];
     if(!is_numeric($id)) header('Location: /');
 
@@ -19,8 +27,19 @@
     $commentsArray = $mankementje->comments;
     $comments = "";
 
+    if(count($commentsArray) == 0) {
+        $comments = "<p>Er zijn nog geen reacties geplaatst.</p>";
+    }
+
     foreach($commentsArray as $comment) {
-        $comments .= renderComment($comment->username, $comment->date, $comment->content, $comment->id);
+        $comments .= renderComment($comment->username, $comment->date, $comment->content, $comment->status, $comment->id);
+    }
+
+    // Getting the alert
+    if(isset($_GET['message'])) {
+        $alert = $_GET['message'];
+    } else {
+        $alert = 0;
     }
 ?>
 
@@ -30,36 +49,35 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mankementjes</title>
+    <title><?php echo "$title &centerdot; $location, $park" ?> | Mankementjes</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/main.css">
     <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/main.js"></script>
 </head>
 
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a href="./index.php" class="navbar-brand primary"><i class="bi bi-tools"></i>&nbsp;Mankementjes</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
-                    class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a href="./archief.php" class="nav-link">Archief</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php echo renderNavbar($loggedin); ?>
+    <!-- Render the navbar using the renderNavbar function from functions.php -->
 
     <div class="container mt-5 pt-4">
+        <?php echo renderAlert($alert); ?>
         <div class="row">
             <div class="col">
-                <span class="mankementje-park-locatie"><?php echo $park; ?> &centerdot; <?php echo $location; ?>
+                <?php
+                    if($status == 'open') {
+                        echo "<a href='/' class='me-2 hover-pointer'><i class='bi bi-caret-left-fill'></i>Terug naar homepagina</a>";	
+                    } else {
+                        echo "<a href='/archief.php' class='me-2 hover-pointer'><i class='bi bi-caret-left-fill'></i>Terug naar archief</a>";
+                    }
+                ?>
+                <span class="mankementje-park-locatie" title="Locatie van het mankementje"><?php echo $park; ?>
+                    &centerdot; <?php echo $location; ?>
                     (<?php echo $section;?>)</span><br>
             </div>
         </div>
@@ -74,13 +92,23 @@
             </div>
             <div class="col-12 col-md-6 ps-md-5">
                 <?php if($status == 'open') {
-                    echo "<a class='btn btn-success'><i class='bi bi-check'></i>&nbsp;Dit is opgelost!</a>";
-                    echo "<a class='btn btn-danger'><i class='bi bi-exclamation-triangle-fill'></i>&nbsp;Rapporteer</a>";
-                }
-                    ?>
-                <h2 class="mt-3">Reacties</h2>
+                    echo "<a class='btn btn-success me-2' title='Markeer dit mankementje als opgelost'><i class='bi bi-check'></i>&nbsp;Dit is opgelost!</a>";
+                    echo "<a class='btn btn-danger' title='Rapporteer dit mankementje'><i class='bi bi-exclamation-triangle-fill'></i>&nbsp;Rapporteer</a>";
+                    }
+                ?>
 
-                <?php echo $comments; ?>
+                <h3 class="mt-3">Reageren</h3>
+                <form class="mb-3" method="POST" enctype="multipart/form-data"
+                    action="http://localhost:3000/comment/add">
+                    <div class="mb-3">
+                        <textarea class="form-control" name="content" id="comment" placeholder="Typ hier je reactie..."
+                            rows="2" required></textarea>
+                    </div>
+                    <input type="hidden" name="mankementje" value="<?php echo $id; ?>">
+                    <input type="hidden" name="user" value="<?php echo $_SESSION['username']; ?>">
+                    <button type="submit" class="btn btn-primary">Plaats reactie</button>
+                    <h2 class="mt-3">Reacties</h2>
+                    <?php echo $comments; ?>
             </div>
         </div>
 

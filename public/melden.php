@@ -1,24 +1,12 @@
 <?php
     require_once "./functions.php";
+
     session_start();
 
     if(isset($_SESSION['loggedin'])) {
         $loggedin = $_SESSION['loggedin'];
     } else {
         $loggedin = false;
-    }
-
-    $mankementjes = "";
-
-    $mankementjesArray = getMankementjes();
-
-    foreach($mankementjesArray as $mankement) {
-        if($mankement->status !== "open") continue; // filter out archived mankementjes
-        $mankementjes .= renderMankementje($mankement->id, $mankement->image, $mankement->title, $mankement->park, $mankement->location, $mankement->date, count($mankement->comments));
-    }
-
-    if(count($mankementjesArray) == 0) {
-        $mankementjes = "<div class='col-12'><p>Er zijn nog geen mankementjes gemeld.</p></div>";
     }
 
     // Getting the alert
@@ -35,7 +23,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mankementjes</title>
+    <title>Melden | Mankementjes</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -53,10 +41,8 @@
 
     <div class="container mt-5 pt-4">
         <?php echo renderAlert($alert); ?>
-        <h2>Alle mankementjes</h2>
-        <div class="row row-cols-1 g-4">
-            <?php echo $mankementjes; ?>
-        </div>
+        <h2>Mankementjes melden is op dit moment nog niet mogelijk.</h2>
+        <a href='/' class='me-2 hover-pointer'><i class='bi bi-caret-left-fill'></i>Terug naar homepagina</a>
     </div>
 </body>
 

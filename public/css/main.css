@@ -35,3 +35,11 @@
 .row .mankementje-stats {
   margin-top: 1.5rem;
 }
+
+a:hover {
+  cursor: pointer;
+}
+
+.navbar-icon {
+  font-size: 1.25rem;
+}

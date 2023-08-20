@@ -1,4 +1,6 @@
 const express = require("express");
+const bodyparser = require("body-parser");
+const multer = require("multer")();
 
 const app = express();
 const moment = require("moment");
@@ -8,6 +10,12 @@ const settings = require("./settings.json");
 const welcome_message = require("./welcome_message.json");
 
 const db = require("./database.js");
+
+db.setup();
+
+app.use(bodyparser.json());
+app.use(multer.array());
+app.use(bodyparser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send(welcome_message);
@@ -19,38 +27,7 @@ app.get("/mankementjes", (req, res) => {
 });
 
 app.get("/mankementjes/archief", (req, res) => {
-  db.all(
-    `SELECT * FROM mankementje WHERE status = 'resolved'`,
-    [],
-    (err, rows) => {
-      if (err) throw err;
-
-      const mankementjes = [];
-      let counter = 0;
-
-      rows.forEach((row) => {
-        db.all(
-          `SELECT * FROM comment WHERE mankementje = ?`,
-          [row.id],
-          (err, comments) => {
-            if (err) throw err;
-            row.comments = [];
-            row.date = moment(row.date).format("D-MM-YYYY");
-
-            comments.forEach((comment) => {
-              row.comments.push(comment);
-            });
-
-            mankementjes.push(row);
-            counter++;
-            if (counter == rows.length) {
-              res.send(mankementjes);
-            }
-          }
-        );
-      });
-    }
-  );
+  db.getArchivedMankementjes(res);
 });
 
 // Get mankementje by id
@@ -87,6 +64,55 @@ app.get("/parken/:park/:location/:section", (req, res) => {
   const section = req.params.section;
 
   db.getMankementjesInSection(park, location, section, res);
+});
+
+// Add user
+app.post("/user/register", (req, res) => {
+  const user = req.body;
+  const username = user.username;
+  const password = user.password;
+  const passwordRepeat = user.passwordRepeat;
+
+  if (password !== passwordRepeat) {
+    return res.redirect(
+      `${settings.mankementjesurl}/auth/login.php?message=20`
+    );
+  }
+
+  if (!password.match(settings.passwordregex)) {
+    return res.redirect(
+      `${settings.mankementjesurl}/auth/login.php?message=22`
+    );
+  }
+
+  db.createUser(username, password, res);
+});
+
+// Login user
+app.post("/user/login", (req, res) => {
+  const user = req.body;
+  const username = user.username;
+  const password = user.password;
+
+  db.loginUser(username, password, res);
+});
+
+// Add comment
+app.post("/comment/add", (req, res) => {
+  const comment = req.body;
+  const mankement = comment.mankementje;
+  const username = comment.user;
+  const content = comment.content;
+
+  db.addComment(mankement, username, content, res);
+});
+
+// Delete comment
+app.get("/comment/delete/:id/:username", (req, res) => {
+  const id = req.params.id;
+  const username = req.params.username;
+
+  db.deleteComment(id, username, res);
 });
 
 app.listen(settings.port, () =>
