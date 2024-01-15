@@ -9,14 +9,13 @@
 <div class="container mt-5 pt-4">
     <div class="row mb-2">
         <div class="col">
-            <span class="mankementje-park-locatie">{{ $mankementje['park'] }} &centerdot;
-                {{ $mankementje['location'] }}</span><br>
+            <span class="mankementje-park-locatie">{{ $mankementje['park'] }}</span><br>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-6">
             <img class="img-fluid rounded mb-2" src="{{ $mankementje['image'] }}">
-            <h2>{{ $mankementje['title'] }}</h2>
+            <h2>{{ $mankementje['location'] }} - {{ $mankementje['title'] }}</h2>
             <span class="mankementje-datum">Gemeld op {{ $mankementje['date'] }} door
                 {{ $user["name"] }} &centerdot; {{$mankementje["status"]}}</span>
             <p>

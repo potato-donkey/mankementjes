@@ -22,3 +22,7 @@ Route::get('mankementje/{id}', function ($id) {
         'mankementje' => App\Models\Mankementje::findOrFail($id)
     ]);
 });
+
+Route::get('archief', function () {
+    return view('archive');
+});
