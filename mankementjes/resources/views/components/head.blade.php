@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>{{$title}} &centerdot; Mankementjes</title>
+    <title>{{$title}} - Mankementjes</title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-icons.css') }}">

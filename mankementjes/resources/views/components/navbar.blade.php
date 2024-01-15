@@ -1,12 +1,18 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a href="/" class="navbar-brand primary fw-bold"><i class="bi bi-tools"></i>&nbsp;Mankementjes</a>
+            <a href="/" class="navbar-brand primary"><i class="bi bi-tools"></i>&nbsp;Mankementjes</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
+                    @auth
+                    <li class="nav-item"><a href="/mankement-melden" class="nav-link">Melden</a></li>
+                    @endauth
+
                     <li class="nav-item"><a href="/archief" class="nav-link">Archief</a></li>
+
+                    <li class="nav-item ms-auto"><a href="/me" class="nav-link">Ik</a></li> <!-- Align to right -->
                 </ul>
             </div>
         </div>
