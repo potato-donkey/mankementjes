@@ -7,7 +7,7 @@
 @endphp
 
 <div class="container mt-5 pt-4">
-    <div class="row">
+    <div class="row mb-2">
         <div class="col">
             <span class="mankementje-park-locatie">{{ $mankementje['park'] }} &centerdot;
                 {{ $mankementje['location'] }}</span><br>

@@ -17,7 +17,7 @@
                     <li class="nav-item ms-auto"><a href="/me" class="nav-link">Ik&nbsp;<i class="bi bi-person-circle"></i></a></li>
                 </ul>
                 @endauth
-                
+
                 @guest
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item ms-auto"><a href="/login" class="nav-link">Inloggen</a></li>
@@ -26,3 +26,7 @@
             </div>
         </div>
     </nav>
+
+    @if(env('APP_ENV') == 'development')
+        <x-alert type="info" message="Development mode" />
+    @endif

@@ -72,3 +72,34 @@ a.mankementje .card:hover
 {
   color: #af0000;
 }
+
+.c-alert
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100vw - 2rem);
+  padding: 1rem;
+  margin: none;
+  margin-left: 1rem;
+  color: white;
+  z-index: 1000;
+  margin-top: 5em;
+
+  border-radius: 0.5em;
+}
+
+.c-alert-danger
+{
+  background-color: rgba(175, 80, 80, 0.65);
+}
+
+.c-alert-info
+{
+  background-color: rgba(80, 80, 175, 0.65);
+}
+
+.c-alert-success
+{
+  background-color: rgba(80, 175, 80, 0.65);
+}
