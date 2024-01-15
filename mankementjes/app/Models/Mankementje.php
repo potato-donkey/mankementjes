@@ -18,6 +18,7 @@ class Mankementje extends Model
         'title',
         'description',
         'date',
+        'solve_date',
         'image',
         'user_id',
         'status',

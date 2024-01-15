@@ -13,19 +13,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-6">
-            <img class="img-fluid rounded mb-2" src="{{ $mankementje['image'] }}">
+        <div class="col-12 col-md-8">
+            <img class="img of-c op-c w-100 mh-60 rounded mb-2 bg-black" src="{{ $mankementje['image'] }}">
             <h2>{{ $mankementje['location'] }} - {{ $mankementje['title'] }}</h2>
             <span class="mankementje-datum">Gemeld op {{ $mankementje['date'] }} door
-                {{ $user["name"] }} &centerdot; {{$mankementje["status"]}}</span>
+                @if ($user) {{ $user["name"] }} @else onbekend @endif &centerdot; {{$mankementje["status"]}}</span>
             <p>
                 {{ $mankementje['description'] }}
             </p>
         </div>
-        <div class="col-12 col-md-6 ps-md-5">
+        <div class="col-12 col-md-4 ps-md-5">
             @unless( $mankementje["status"] == 'Opgelost' )
                 <a class='btn btn-success'><i class='bi bi-check'></i>&nbsp;Dit is opgelost!</a>
-                <a class='btn btn-danger'><i class='bi bi-exclamation-triangle-fill'></i>&nbsp;Rapporteer</a>
+                <a class='btn btn-danger' href="mailto:report@mankementjes.nl?subject=Report%3A%20mankementje%20%23{{ $mankementje['id'] }}"><i class='bi bi-exclamation-triangle-fill'></i>&nbsp;Rapporteer</a>
             @endunless
             
             @php
@@ -38,6 +38,12 @@
 
             @unless ($mankementje["status"] == 'Opgelost')
                 <h3 class="mt-3">Reageer</h3>
+                <form action="/mankementje/{{ $mankementje['id'] }}/comment" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <textarea class="form-control" id="comment" name="comment" placeholder="Reactie" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Verstuur</button>
             @else
                 <span class="mankementje-datum mt-3">Dit mankementje is opgelost. Reageren is niet meer mogelijk.</span>
             @endunless

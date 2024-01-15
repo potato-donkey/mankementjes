@@ -26,7 +26,7 @@
                                         $colour = 'green';
                                         break;
                                     default:
-                                        $colour = 'secondary';
+                                        $colour = 'orange';
                                         break;
                                 }
                             @endphp
