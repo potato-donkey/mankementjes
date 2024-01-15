@@ -37,6 +37,12 @@
             <h2 class="mt-3">Reacties</h2>
             <x-comment-list :comments="$comments" />
 
+            @unless ($mankementje["status"] == 'Opgelost')
+                <h3 class="mt-3">Reageer</h3>
+            @else
+                <span class="mankementje-datum mt-3">Dit mankementje is opgelost. Reageren is niet meer mogelijk.</span>
+            @endunless
+
         </div>
     </div>
 </div>
