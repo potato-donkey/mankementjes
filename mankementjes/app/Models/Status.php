@@ -18,7 +18,7 @@ class Status extends Model
 
     protected $primaryKey = 'status';
     
-    protected $incrementing = false;
+    public $incrementing = false;
 
     protected $keyType = 'string';
 }

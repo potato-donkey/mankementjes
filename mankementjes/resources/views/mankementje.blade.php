@@ -17,6 +17,9 @@
 
     // Get park from model
     $park = \App\Models\Park::where('identifier', $mankementje['park'])->first();
+
+    // Get status from model
+    $status = \App\Models\Status::where('status', $mankementje['status'])->first();
 @endphp
 
 <div class="container mt-5 pt-4">
@@ -45,7 +48,9 @@
                     {{ $user['name'] }}
                 @else
                     {{ '(onbekend)' }}
-                @endif &centerdot; {{ $mankementje['status'] }}
+                @endif &centerdot;
+                <span class="mankementje-status"
+                    title="{{ $status['description'] }}">{{ $mankementje['status'] }}</span>
             </span>
             {!! (new CommonMarkConverter($markdownConfig))->convert($mankementje['description'])->getContent() !!}
         </div>

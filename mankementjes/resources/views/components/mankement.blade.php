@@ -9,6 +9,7 @@
                             <span class='text-secondary'>
                                 @php
                                     $park = \App\Models\Park::where('identifier', $mankementje['park'])->first();
+                                    $statusObj = \App\Models\Status::where('status', $mankementje['status'])->first();
                                 @endphp
 
                                 @if ($park)
@@ -43,7 +44,8 @@
                                         break;
                                 }
                             @endphp
-                            <span class='mankementje-status {{ $colour }}'><i
+                            <span class='mankementje-status {{ $colour }}'
+                                title="{{ $statusObj['description'] }}"><i
                                     class="bi bi-circle-fill"></i>&nbsp;{{ $mankementje['status'] }}</span>
                         </div>
                         <div class="row mt-3">

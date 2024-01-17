@@ -32,6 +32,10 @@
     color: #000000;
 }
 
+.mankementje-status:hover {
+    cursor: help;
+}
+
 .mankementje-card-img {
     aspect-ratio: 16/9;
     object-fit: cover;
