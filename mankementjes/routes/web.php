@@ -26,3 +26,14 @@ Route::get('mankementje/{id}', function ($id) {
 Route::get('archief', function () {
     return view('archive');
 });
+
+Route::get('park/{park}', function ($park) {
+    return view('park', [
+        'park' => App\Models\Park::findOrFail($park)
+    ]);
+});
+
+Route::post('mankementje/{id}/comment', function ($id) {
+    // TODO: Implement comment functionality
+    return redirect("/mankementje/$id");
+});

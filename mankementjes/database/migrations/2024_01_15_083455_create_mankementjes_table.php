@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->date('date');
+            $table->date('solve_date')->nullable();
             $table->string('image');
             $table->integer('user_id');
             $table->string('status')->constrained();

@@ -4,12 +4,12 @@
     font-family: "Arvo";
 }
 
-:root {
-    --primary: #8a1526;
+.primary {
+    color: var(--bs-primary) !important;
 }
 
-.primary {
-    color: var(--primary) !important;
+.square {
+    aspect-ratio: 1/1;
 }
 
 .mankementje-park-locatie {
