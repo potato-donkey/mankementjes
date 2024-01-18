@@ -4,6 +4,12 @@
     font-family: "Arvo";
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .primary {
     color: var(--bs-primary) !important;
 }
@@ -44,6 +50,10 @@
 a.unstyled {
     color: inherit;
     text-decoration: none;
+}
+
+a.unstyled.hover:hover {
+    text-decoration: underline;
 }
 
 a.mankementje .card {

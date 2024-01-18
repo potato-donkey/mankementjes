@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-6">
             <h2>Opgeloste mankementjes</h2>
-            <span class="text-muted fst-italic">Deze mankementjes zijn nog niet opgelost.</span>
+            <span class="text-muted fst-italic">Deze mankementjes zijn al opgelost.</span>
         </div>
         <div class="col-4">
             <x-park-filter />
@@ -19,3 +19,5 @@
         <x-mankement-list :mankementjes="$mankementjes" />
     </div>
 </div>
+
+<x-footer />

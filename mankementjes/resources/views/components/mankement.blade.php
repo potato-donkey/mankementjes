@@ -1,4 +1,4 @@
-<div class='mankementje col-12 col-md-4' data-park="{{ $mankementje['park'] }}">
+<div class='mankementje col' data-park="{{ $mankementje['park'] }}">
     <a class='unstyled mankementje' href='./mankementje/{{ $mankementje['id'] }}'>
         <div class='card'>
             <img src='{{ $mankementje['image'] }}' class='card-img-top mankementje-card-img' alt='Foto van mankement'>
@@ -18,8 +18,9 @@
                                     {{ 'Onbekend' }}
                                 @endif
                             </span>
-                            &nbsp;
-                            <span class='fst-italic'>{{ $mankementje['location'] }}</span></span><br>
+                            <br />
+                            <span
+                                class=' mankementje-locatie fst-italic'>{{ $mankementje['location'] }}</span></span><br>
                         <span class='mankementje-titel'>{{ $mankementje['title'] }}</span><br>
                         <span class='mankementje-datum'>Gemeld op
                             {{ \App\Http\Controllers\DateController::renderFullDate($mankementje['date']) }}</span>

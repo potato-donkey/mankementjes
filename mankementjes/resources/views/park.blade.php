@@ -25,3 +25,5 @@
         <x-mankement-list :mankementjes="$mankementjes" />
     </div>
 </div>
+
+<x-footer />
