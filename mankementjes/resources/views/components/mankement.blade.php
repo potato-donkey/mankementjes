@@ -19,8 +19,16 @@
                                 @endif
                             </span>
                             <br />
-                            <span
-                                class=' mankementje-locatie fst-italic'>{{ $mankementje['location'] }}</span></span><br>
+                            <span class=' mankementje-locatie fst-italic'>
+                                @php
+                                    $location = \App\Models\Location::where('id', $mankementje['location'])->first();
+                                @endphp
+                                @if ($location)
+                                    {{ $location['location'] }}
+                                @else
+                                    {{ 'Algemeen' }}
+                                @endif
+                            </span></span><br>
                         <span class='mankementje-titel'>{{ $mankementje['title'] }}</span><br>
                         <span class='mankementje-datum'>Gemeld op
                             {{ \App\Http\Controllers\DateController::renderFullDate($mankementje['date']) }}</span>
