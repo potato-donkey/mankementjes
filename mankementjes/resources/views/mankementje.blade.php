@@ -20,6 +20,9 @@
 
     // Get status from model
     $status = \App\Models\Status::where('status', $mankementje['status'])->first();
+
+    // Get location from model
+    $location = \App\Models\Location::where('id', $mankementje['location'])->first();
 @endphp
 
 <div class="container mt-5 pt-4">
@@ -41,7 +44,13 @@
     <div class="row">
         <div class="col-12 col-md-8">
             <img class="img w-100 of-c op-c mh-60 bg-primary rounded mb-2" src="{{ $mankementje['image'] }}">
-            <h2>{{ $mankementje['location'] }} - {{ $mankementje['title'] }}</h2>
+            <h2>
+                @if ($location)
+                    {{ $location['location'] }}
+                @else
+                    {{ 'Algemeen' }}
+                @endif - {{ $mankementje['title'] }}
+            </h2>
             <span class="mankementje-datum">Gemeld op
                 {{ \App\Http\Controllers\DateController::renderFullDate($mankementje['date']) }} door
                 @if ($user)
@@ -92,18 +101,23 @@
             <h2 class="mt-3">Reacties</h2>
             <x-comment-list :comments="$comments" />
 
-            @unless ($mankementje['status'] == 'Opgelost')
-                <h3 class="mt-3">Reageer</h3>
-                <form action="/mankementje/{{ $mankementje['id'] }}/comment" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Reactie"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Plaatsen</button>
-                @else
-                    <span class="mankementje-datum mt-3">Dit mankementje is opgelost. Reageren is niet meer mogelijk.</span>
-                @endunless
+            @auth
+                @unless ($mankementje['status'] == 'Opgelost')
+                    <h3 class="mt-3">Reageer</h3>
+                    <form action="/mankementje/{{ $mankementje['id'] }}/comment" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Reactie"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Plaatsen</button>
+                    @else
+                        <span class="mankementje-datum mt-3">Dit mankementje is opgelost. Reageren is niet meer mogelijk.</span>
+                    @endunless
+                @endauth
 
+                @guest
+                    <span class="mt-3"><a href="/me/login">Log in</a> om te reageren.</span>
+                @endguest
         </div>
     </div>
 </div>

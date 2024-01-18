@@ -1,4 +1,4 @@
-<div class='card'>
+<div class='card' data-comment="{{ $comment['id'] }}">
     <div class='card-body'>
         @php
             $user = \App\Models\User::where('id', $comment['user_id'])->first();
@@ -15,6 +15,6 @@
         @endif
 
         <p class='card-text'>{{ $comment['content'] }}</p>
-        <small>{{ \App\Http\Controllers\DateController::renderFullDate($comment['date']) }}</small>
+        <small>{{ \App\Http\Controllers\DateController::renderFullDateWithTime($comment['date']) }}</small>
     </div>
 </div>
