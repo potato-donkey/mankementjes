@@ -14,10 +14,10 @@
             <span class="text-muted fst-italic">Deze mankementjes zijn nog niet opgelost.</span>
         </div>
         <div class="col-4">
-            <select class="form-select" id="filter" aria-label="Filter op park">
-                <option value="none" selected>Filter op park</option>
+            <select class="form-select" id="parkFilter" aria-label="Filter op park">
+                <option value="none" selected>Alle parken</option>
                 @foreach ($parks as $park)
-                    <option value="{{ $park->id }}">{{ $park->name }}</option>
+                    <option value="{{ $park->identifier }}">{{ $park->name }}</option>
                 @endforeach
             </select>
         </div>

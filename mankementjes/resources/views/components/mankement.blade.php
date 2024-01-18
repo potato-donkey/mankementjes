@@ -1,4 +1,4 @@
-<div class='mankementje col-12 col-md-4'>
+<div class='mankementje col-12 col-md-4' data-park="{{ $mankementje['park'] }}">
     <a class='unstyled mankementje' href='./mankementje/{{ $mankementje['id'] }}'>
         <div class='card'>
             <img src='{{ $mankementje['image'] }}' class='card-img-top mankementje-card-img' alt='Foto van mankement'>

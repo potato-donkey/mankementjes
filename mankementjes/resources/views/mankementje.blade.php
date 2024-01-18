@@ -49,8 +49,30 @@
                 @else
                     {{ '(onbekend)' }}
                 @endif &centerdot;
-                <span class="mankementje-status"
-                    title="{{ $status['description'] }}">{{ $mankementje['status'] }}</span>
+
+                @php
+                    $statusText = $mankementje['status'];
+                    $statusText = strtolower($statusText);
+
+                    $colour = '';
+
+                    switch ($statusText) {
+                        case 'open':
+                            $colour = 'red';
+                            break;
+                        case 'opgelost':
+                            $colour = 'green';
+                            break;
+                        default:
+                            $colour = 'orange';
+                            break;
+                    }
+                @endphp
+                <span class="mankementje-status {{ $colour }}"
+                    title="{{ $status['description'] }}">{{ $status['status'] }}</span>
+                @if ($status['status'] == 'Opgelost' && !empty($mankementje['solve_date']))
+                    op {{ \App\Http\Controllers\DateController::renderFullDate($mankementje['solve_date']) }}
+                @endif
             </span>
             {!! (new CommonMarkConverter($markdownConfig))->convert($mankementje['description'])->getContent() !!}
         </div>
