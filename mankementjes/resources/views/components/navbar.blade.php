@@ -14,7 +14,8 @@
                 </ul>
                 @auth
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item ms-auto"><a href="/me" class="nav-link">{{ Auth::user()->name }}&nbsp;<i
+                        <li class="nav-item ms-auto"><a href="/me"
+                                class="nav-link @if (Auth::user()->id == 0) {{ 'text-secondary' }} @endif">{{ Auth::user()->name }}&nbsp;<i
                                     class="bi bi-person-circle"></i></a></li>
                     </ul>
                 @endauth
