@@ -14,12 +14,7 @@
             <span class="text-muted fst-italic">Deze mankementjes zijn nog niet opgelost.</span>
         </div>
         <div class="col-4">
-            <select class="form-select" id="parkFilter" aria-label="Filter op park">
-                <option value="none" selected>Alle parken</option>
-                @foreach ($parks as $park)
-                    <option value="{{ $park->identifier }}">{{ $park->name }}</option>
-                @endforeach
-            </select>
+            <x-park-filter />
         </div>
         <div class="col-2">
             <a href="/mankement-melden" class="btn btn-primary float-end"><i class="bi bi-plus"></i>&nbsp;Melden</a>
