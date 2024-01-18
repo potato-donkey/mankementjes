@@ -15,6 +15,6 @@
         @endif
 
         <p class='card-text'>{{ $comment['content'] }}</p>
-        <small>{{ $comment['date'] }}</small>
+        <small>{{ \App\Http\Controllers\DateController::renderFullDate($comment['date']) }}</small>
     </div>
 </div>
