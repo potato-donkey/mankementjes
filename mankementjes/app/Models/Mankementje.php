@@ -22,5 +22,6 @@ class Mankementje extends Model
         'image',
         'user_id',
         'status',
+        'created_at',
     ];
 }

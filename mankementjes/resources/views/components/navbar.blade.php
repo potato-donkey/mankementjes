@@ -6,11 +6,12 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
-                    @auth
-                        <li class="nav-item"><a href="/mankement-melden" class="nav-link">Melden</a></li>
-                    @endauth
-
                     <li class="nav-item"><a href="/archief" class="nav-link">Archief</a></li>
+                    @auth
+                        @if (Auth::user()->id == 0)
+                            <li class="nav-item"><a href="/admin" class="nav-link">Administratie</a></li>
+                        @endif
+                    @endauth
                 </ul>
                 @auth
                     <ul class="navbar-nav ms-auto">

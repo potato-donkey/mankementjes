@@ -1,3 +1,7 @@
+@php
+    // Select all mankementjes made by the current user
+    $mankementjes = \App\Models\Mankementje::where('user_id', '=', Auth::user()->id)->get();
+@endphp
 <x-head title="Gebruiker" />
 <x-navbar />
 
@@ -8,6 +12,10 @@
         <span><b>E-mailadres:</b> {{ Auth::user()->email }}</span><br>
         <span><b>Lid sinds:</b>
             {{ \App\Http\Controllers\DateController::renderFullDate(Auth::user()->created_at) }}</span><br>
+    </div>
+    <div class="row mt-5">
+        <h3>Mijn mankementjes</h3>
+        <x-mankement-list :mankementjes="$mankementjes" />
     </div>
     <div class="row mt-3">
         <div class="col-12 col-md-3">

@@ -27,12 +27,6 @@ Route::get('archief', function () {
     return view('archive');
 });
 
-Route::get('park/{park}', function ($park) {
-    return view('park', [
-        'park' => App\Models\Park::findOrFail($park)
-    ]);
-});
-
 Route::post('mankementje/{id}/comment', function ($id) {
     if(Auth::guest()) {
         return redirect('/me/login');
@@ -48,6 +42,40 @@ Route::post('mankementje/{id}/comment', function ($id) {
     return redirect("/mankementje/$id");
 });
 
+Route::get('melden', function () {
+    if(Auth::guest()) {
+        return redirect('/me/login');
+    }
+    
+    return view('new-mankement');
+});
+
+Route::post('melden', function () {
+    if(Auth::guest()) {
+        return redirect('/me/login');
+    }
+    
+    $mankementje = \App\Models\Mankementje::create([
+        'user_id' => Auth::user()->id,
+        'title' => request('title'),
+        'description' => request('description'),
+        'date' => date('m/d/Y H:i:s'),
+        'park' => request('park'),
+        'location' => request('location'),
+        'image' => '/assets/noimg.jpg',
+        'status' => 'Open'
+    ]);
+
+    return redirect('/mankementje/' . $mankementje->id);
+});
+
+// Park pages
+Route::get('park/{park}', function ($park) {
+    return view('park', [
+        'park' => App\Models\Park::findOrFail($park)
+    ]);
+});
+
 // User pages
 Route::get('me', function () {
     if(Auth::guest()) {
@@ -58,9 +86,27 @@ Route::get('me', function () {
 });
 
 Route::get('me/login', function () {
+    if(Auth::user()) {
+        return redirect('/me');
+    }
+    
     return view('login');
 });
 
 Route::post('me/login', 'App\Http\Controllers\LoginController@authenticate');
 
 Route::get('me/logout', 'App\Http\Controllers\LoginController@logout');
+
+// Admin pages
+
+Route::get('admin', function () {
+    if(Auth::guest()) {
+        return redirect('/me/login');
+    }
+    
+    if(Auth::user()->id != 0) {
+        return redirect('/');
+    }
+    
+    return view('admin.dashboard');
+});
