@@ -69,6 +69,24 @@ Route::post('melden', function () {
     return redirect('/mankementje/' . $mankementje->id);
 });
 
+Route::get('mankementje/{id}/solve', function ($id) {
+    if(Auth::guest()) {
+        return redirect('/me/login');
+    }
+    
+    $mankementje = \App\Models\Mankementje::findOrFail($id);
+    
+    if($mankementje->user_id != Auth::user()->id) {
+        return redirect('/mankementje/' . $mankementje->id);
+    }
+    
+    $mankementje->status = 'Opgelost';
+    $mankementje->solve_date = date('m/d/Y H:i:s');
+    $mankementje->save();
+
+    return redirect('/');
+});
+
 // Park pages
 Route::get('park/{park}', function ($park) {
     return view('park', [
@@ -109,4 +127,19 @@ Route::get('admin', function () {
     }
     
     return view('admin.dashboard');
+});
+
+Route::get('admin/mankementje/{id}/delete', function () {
+    if(Auth::guest()) {
+        return redirect('/me/login');
+    }
+    
+    if(Auth::user()->id != 0) {
+        return redirect('/');
+    }
+    
+    $mankementje = \App\Models\Mankementje::findOrFail(request('id'));
+    $mankementje->delete();
+
+    return redirect('/admin');
 });

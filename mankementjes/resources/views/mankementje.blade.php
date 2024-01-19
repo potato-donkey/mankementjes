@@ -91,7 +91,12 @@
         </div>
         <div class="col-12 col-md-4 ps-md-5">
             @unless ($mankementje['status'] == 'Opgelost')
-                <a class='btn btn-success'><i class='bi bi-check'></i>&nbsp;Dit is opgelost!</a>
+                @auth
+                    @if ($mankementje['user_id'] == Auth::user()->id || Auth::user()->id == 0)
+                        <a class='btn btn-success' href="/mankementje/{{ $mankementje['id'] }}/solve"><i
+                                class='bi bi-check'></i>&nbsp;Dit is opgelost!</a>
+                    @endif
+                @endauth
                 <a class='btn btn-danger'
                     href="mailto:report@mankementjes.nl?subject=Rapport%3A%20mankementje%20%23{{ $mankementje['id'] }}"><i
                         class='bi bi-exclamation-triangle-fill'></i>&nbsp;Rapporteer</a>
