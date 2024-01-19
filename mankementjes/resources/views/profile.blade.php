@@ -4,8 +4,12 @@
 <div class="container mt-5 pt-4">
     <div class="row">
         <h2>Gegevens</h2>
+        <span><b>Gebruikersnaam:</b> {{ Auth::user()->name }}</span><br>
+        <span><b>E-mailadres:</b> {{ Auth::user()->email }}</span><br>
+        <span><b>Lid sinds:</b>
+            {{ \App\Http\Controllers\DateController::renderFullDate(Auth::user()->created_at) }}</span><br>
     </div>
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12 col-md-3">
             <div class="btn-group" role="group">
                 <a href="/me/logout" class="btn btn-danger">Uitloggen</a>

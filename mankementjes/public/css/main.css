@@ -120,3 +120,13 @@ a.mankementje .card:hover {
 .mh-60 {
     max-height: 60%;
 }
+
+.text-verylarge {
+    font-size: 30rem;
+}
+
+@media (max-width: 768px) {
+    .text-verylarge {
+        font-size: 6rem;
+    }
+}
