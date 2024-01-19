@@ -121,6 +121,10 @@ a.mankementje .card:hover {
     max-height: 60%;
 }
 
+.mh-40 {
+    max-height: 40%;
+}
+
 .text-verylarge {
     font-size: 30rem;
 }

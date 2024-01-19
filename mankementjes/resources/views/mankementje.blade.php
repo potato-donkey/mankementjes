@@ -43,7 +43,7 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-8">
-            <img class="img w-100 of-c op-c mh-60 bg-primary rounded mb-2" src="{{ $mankementje['image'] }}">
+            <img class="img w-100 of-c op-c mh-40 bg-primary rounded mb-2" src="{{ $mankementje['image'] }}">
             <h2>
                 @if ($location)
                     {{ $location['location'] }}

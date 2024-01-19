@@ -1,8 +1,6 @@
 @php
     // select where status is not 'Opgelost'
     $mankementjes = \App\Models\Mankementje::where('status', '!=', 'Opgelost')->get();
-
-    $parks = \App\Models\Park::all();
 @endphp
 <x-head title="Home" />
 <x-navbar />
