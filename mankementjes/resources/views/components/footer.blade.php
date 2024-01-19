@@ -1,4 +1,4 @@
-<footer class="footer mt-auto py-3 bg-primary">
+<footer class="footer mt-auto py-2 bg-primary">
     <div class="container text-white">
         <span>2024 &copy; {{ env('APP_NAME') }}</span>
         &centerdot;
