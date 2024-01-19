@@ -83,7 +83,11 @@
                     op {{ \App\Http\Controllers\DateController::renderFullDate($mankementje['solve_date']) }}
                 @endif
             </span>
-            {!! (new CommonMarkConverter($markdownConfig))->convert($mankementje['description'])->getContent() !!}
+            {!! str_replace(
+                "\n",
+                '<br />',
+                (new CommonMarkConverter($markdownConfig))->convert($mankementje['description'])->getContent(),
+            ) !!}
         </div>
         <div class="col-12 col-md-4 ps-md-5">
             @unless ($mankementje['status'] == 'Opgelost')
