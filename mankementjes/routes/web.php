@@ -111,7 +111,17 @@ Route::get('me/login', function () {
     return view('login');
 });
 
+Route::get('me/register', function () {
+    if(Auth::user()) {
+        return redirect('/me');
+    }
+    
+    return view('register');
+});
+
 Route::post('me/login', 'App\Http\Controllers\LoginController@authenticate');
+
+Route::post('me/register', 'App\Http\Controllers\LoginController@create');
 
 Route::get('me/logout', 'App\Http\Controllers\LoginController@logout');
 
@@ -142,4 +152,10 @@ Route::get('admin/mankementje/{id}/delete', function () {
     $mankementje->delete();
 
     return redirect('/admin');
+});
+
+// Misc pages
+
+Route::get('privacy', function () {
+    return view('privacy');
 });

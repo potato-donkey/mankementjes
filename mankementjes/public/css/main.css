@@ -134,3 +134,12 @@ a.mankementje .card:hover {
         font-size: 6rem;
     }
 }
+
+.header-mt > h1,
+.header-mt > h2,
+.header-mt > h3,
+.header-mt > h4,
+.header-mt > h5,
+.header-mt > h6 {
+    margin-top: 1rem;
+}

@@ -7,5 +7,7 @@
         <span>{{ env('APP_NAME') }} is een product van <a href="https://ptdk.nl" class="unstyled hover"
                 target="_blank">potato
                 donkey</a></span>
+        &centerdot;
+        <a class="unstyled hover" href="/privacy">Privacy</a>
     </div>
 </footer>

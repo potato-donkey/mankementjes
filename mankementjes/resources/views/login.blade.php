@@ -25,9 +25,9 @@
                 <li>Mankementjes te melden</li>
                 <li>Op de hoogte te blijven van mankementjes</li>
                 <li>Je eigen mankementjes te beheren</li>
-            </ul>
 
-            <p>Heb je nog geen account? <a href="/me/register">Registreer je dan nu!</a></p>
+                <p>Heb je nog geen account? <a href="/me/register">Registreer je dan nu!</a></p>
+            </ul>
         </div>
     </div>
 </div>
