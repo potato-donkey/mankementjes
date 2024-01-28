@@ -1,0 +1,53 @@
+:root {
+    --pieck-red: #8a1526;
+    --pieck-red-rgb: rgb(138, 21, 38);
+    --pieck-red-hover: #5c0d1a;
+
+    --pieck-blue: #365364;
+    --pieck-blue-rgb: rgb(54, 83, 100);
+    --pieck-blue-hover: #1e2f38;
+
+    --bs-primary: var(--pieck-blue) !important;
+    --bs-primary-rgb: var(--pieck-blue-rgb) !important;
+
+    --bs-secondary: var(--pieck-red) !important;
+    --bs-secondary-rgb: var(--pieck-red-rgb) !important;
+}
+
+.navbar-brand.secondary {
+    color: var(--bs-secondary) !important;
+}
+
+.bg-primary {
+    background-color: var(--bs-primary) !important;
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.text-secondary {
+    color: var(--bs-secondary) !important;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--pieck-blue);
+    --bs-btn-border-color: var(--pieck-blue);
+    --bs-btn-hover-bg: var(--pieck-blue-hover);
+    --bs-btn-hover-border-color: var(--pieck-blue-hover);
+    --bs-btn-active-bg: var(--pieck-blue);
+    --bs-btn-active-border-color: #var(--pieck-blue);
+    --bs-btn-disabled-bg: var(--pieck-blue);
+    --bs-btn-disabled-border-color: var(--pieck-blue);
+}
+
+.btn-secondary {
+    --bs-btn-bg: var(--pieck-red);
+    --bs-btn-border-color: var(--pieck-red);
+    --bs-btn-hover-bg: var(--pieck-red-hover);
+    --bs-btn-hover-border-color: var(--pieck-red-hover);
+    --bs-btn-active-bg: var(--pieck-red);
+    --bs-btn-active-border-color: #var(--pieck-red);
+    --bs-btn-disabled-bg: var(--pieck-red);
+    --bs-btn-disabled-border-color: var(--pieck-red);
+}
