@@ -10,7 +10,7 @@
 
 <div class="container mt-5 pt-4">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <h2>Mankementje melden</h2>
             <span class="text-muted fst-italic">Meld hier een nieuw mankementje.</span>
 
