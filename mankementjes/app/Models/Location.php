@@ -16,5 +16,7 @@ class Location extends Model
         'park',
         'location',
         'description',
+        'latitude',
+        'longitude'
     ];
 }

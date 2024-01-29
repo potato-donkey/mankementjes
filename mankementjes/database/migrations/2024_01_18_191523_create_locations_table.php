@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('park');
             $table->string('location');
             $table->text('description');
+            $table->decimal('latitude', 6, 12);
+            $table->decimal('longitude', 6, 12);
             $table->timestamps();
         });
     }
