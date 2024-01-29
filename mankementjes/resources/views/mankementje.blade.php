@@ -71,7 +71,7 @@
 
             <h2 class="mt-3">Reacties</h2>
             <x-comment-list :comments="$comments" />
-
+        @auth
             @unless ($mankementje['status'] == 'Opgelost')
                 <h3 class="mt-3">Reageer</h3>
                 <form action="/mankementje/{{ $mankementje['id'] }}/comment" method="POST">
@@ -83,6 +83,7 @@
                 @else
                     <span class="mankementje-datum mt-3">Dit mankementje is opgelost. Reageren is niet meer mogelijk.</span>
                 @endunless
+                @endauth
 
                 @guest
                     <span class="mt-3"><a href="/me/login">Log in</a> om te reageren.</span>
