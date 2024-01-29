@@ -16,9 +16,9 @@ class Status extends Model
         'description',
     ];
 
-    protected $primaryKey = 'status';
+    public $primaryKey = 'status';
     
-    protected $incrementing = false;
+    public $incrementing = false;
 
-    protected $keyType = 'string';
+    public $keyType = 'string';
 }
