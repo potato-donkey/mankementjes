@@ -22,7 +22,7 @@
                 @endauth
 
                 @guest
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-md-auto">
                         <li class="nav-item ms-auto"><a href="/me/login" class="btn btn-secondary">Inloggen</a></li>
                     </ul>
                 @endguest

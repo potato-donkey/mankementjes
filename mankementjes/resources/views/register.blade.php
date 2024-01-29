@@ -13,7 +13,7 @@
         </div>
     @endif
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <form action="/me/register" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -35,8 +35,8 @@
                 <button type="submit" class="btn btn-secondary">Registreren</button>
             </form>
         </div>
-        <div class="col-2"></div>
-        <div class="col">
+        <div class="col col-md-2"></div>
+        <div class="col-12 col-md-6">
             <h3>Registreer om</h3>
             <ul>
                 <li>Mankementjes te melden</li>

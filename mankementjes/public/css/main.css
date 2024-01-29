@@ -1,84 +1,102 @@
 @import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-* {
+*
+{
     font-family: "Arvo";
 }
 
-body {
+body
+{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.primary {
+.primary
+{
     color: var(--bs-primary) !important;
 }
 
-.square {
+.square
+{
     aspect-ratio: 1/1;
 }
 
-.mankementje-park-locatie {
+.mankementje-park-locatie
+{
     font-size: 1rem;
     color: #a1a1a1;
 }
 
-.mankementje-titel {
+.mankementje-titel
+{
     font-size: 1.5rem;
     color: #000000;
 }
 
-.mankementje-datum {
+.mankementje-datum
+{
     font-size: 1.15rem;
     color: #000000;
 }
 
-.mankementje-stat {
+.mankementje-stat
+{
     font-size: 2rem;
     color: #000000;
 }
 
-.mankementje-status:hover {
+.mankementje-status:hover
+{
     cursor: help;
 }
 
-.mankementje-card-img {
+.mankementje-card-img
+{
     aspect-ratio: 16/9;
     object-fit: cover;
 }
 
-a.unstyled {
+a.unstyled
+{
     color: inherit;
     text-decoration: none;
 }
 
-a.unstyled.hover:hover {
+a.unstyled.hover:hover
+{
     text-decoration: underline;
 }
 
-a.mankementje .card {
+a.mankementje .card
+{
     transition: 0.2s;
 }
 
-a.mankementje .card:hover {
+a.mankementje .card:hover
+{
     -webkit-box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.5);
     box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
-.mankementje-status.green {
+.mankementje-status.green
+{
     color: #00af00;
 }
 
-.mankementje-status.red {
+.mankementje-status.red
+{
     color: #af0000;
 }
 
-.mankementje-status.orange {
+.mankementje-status.orange
+{
     color: #ff7300;
 }
 
-.c-alert {
+.c-alert
+{
     position: absolute;
     top: 0;
     left: 0;
@@ -93,44 +111,55 @@ a.mankementje .card:hover {
     border-radius: 0.5em;
 }
 
-.c-alert-danger {
+.c-alert-danger
+{
     background-color: rgba(175, 80, 80, 0.65);
 }
 
-.c-alert-info {
+.c-alert-info
+{
     background-color: rgba(80, 80, 175, 0.65);
 }
 
-.c-alert-success {
+.c-alert-success
+{
     background-color: rgba(80, 175, 80, 0.65);
 }
 
-.of-c {
+.of-c
+{
     object-fit: contain;
 }
 
-.op-c {
+.op-c
+{
     object-position: center;
 }
 
-.w-100 {
+.w-100
+{
     width: 100%;
 }
 
-.mh-60 {
+.mh-60
+{
     max-height: 60%;
 }
 
-.mh-40 {
+.mh-40
+{
     max-height: 40%;
 }
 
-.text-verylarge {
+.text-verylarge
+{
     font-size: 30rem;
 }
 
-@media (max-width: 768px) {
-    .text-verylarge {
+@media (max-width: 768px)
+{
+    .text-verylarge
+    {
         font-size: 6rem;
     }
 }
@@ -140,6 +169,23 @@ a.mankementje .card:hover {
 .header-mt > h3,
 .header-mt > h4,
 .header-mt > h5,
-.header-mt > h6 {
+.header-mt > h6
+{
     margin-top: 1rem;
+}
+
+.mankementjes-table
+{
+    overflow: scroll;
+}
+
+#myTabContent
+{
+    overflow: scroll;
+    width: 95vw;
+}
+
+.mankementje-status.blue
+{
+    color: var(--bs-primary);
 }

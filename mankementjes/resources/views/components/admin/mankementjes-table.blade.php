@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover mankementjes-table">
     <thead>
         <tr>
             <th>Park</th>

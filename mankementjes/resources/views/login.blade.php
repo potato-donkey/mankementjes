@@ -4,7 +4,7 @@
 <div class="container mt-5 pt-4">
     <h2>Inloggen</h2>
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <form action="/me/login" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -18,8 +18,8 @@
                 <button type="submit" class="btn btn-secondary">Inloggen</button>
             </form>
         </div>
-        <div class="col-2"></div>
-        <div class="col">
+        <div class="col col-md-2"></div>
+        <div class="col-12 col-md-6">
             <h3>Log in om</h3>
             <ul>
                 <li>Mankementjes te melden</li>

@@ -2,9 +2,9 @@
 <x-navbar />
 
 <div class="container mt-5 pt-4">
-    <h2>Privacy</h2>
+    <h2>Privacyverklaring</h2>
     <div class="row">
-        <div class="col-8 header-mt pb-3">
+        <div class="col-12 col-md-8 header-mt pb-3">
             potato donkey is verantwoordelijk voor de verwerking van persoonsgegevens zoals
             weergegeven in deze privacyverklaring.
 
@@ -68,13 +68,14 @@
             naar
             jou of een ander, door jou genoemde organisatie, te sturen. Je kunt een verzoek tot inzage, correctie,
             verwijdering, gegevensoverdraging van je persoonsgegevens of verzoek tot intrekking van je toestemming of
-            bezwaar op de verwerking van jouw persoonsgegevens sturen naar info@mankementjes.nl. We reageren zo
+            bezwaar op de verwerking van jouw persoonsgegevens sturen naar <a href="mailto:info@mankementjes.nl">info@mankementjes.nl</a>. We reageren zo
             snel mogelijk, maar binnen vier weken, op jouw verzoek. potato donkey wil je er tevens op wijzen dat je de
             mogelijkheid hebt om een klacht in te dienen bij de nationale toezichthouder, de Autoriteit
             Persoonsgegevens.
             Dat kan via de volgende link:
-            https://autoriteitpersoonsgegevens.nl/nl/contact-met-de-autoriteit-persoonsgegevens/tip-ons
-            Hoe wij persoonsgegevens beveiligen
+            <a href="https://autoriteitpersoonsgegevens.nl/nl/contact-met-de-autoriteit-persoonsgegevens/tip-ons" target="_blank">https://autoriteitpersoonsgegevens.nl/nl/contact-met-de-autoriteit-persoonsgegevens/tip-ons</a>
+            
+            <h4>Hoe wij persoonsgegevens beveiligen</h4>
 
             potato donkey neemt de bescherming van jouw gegevens serieus en neemt passende maatregelen om misbruik,
             verlies,

@@ -31,10 +31,7 @@
                             </span></span><br>
                         <span class='mankementje-titel'>{{ $mankementje['title'] }}</span><br>
                         <span class='mankementje-datum'>Gemeld op
-                            {{ \App\Http\Controllers\DateController::renderFullDate($mankementje['date']) }}</span>
-                    </div>
-                    <div class='col-4 mankementje-comments'>
-                        <div class="row">
+                            {{ \App\Http\Controllers\DateController::renderFullDate($mankementje['date']) }}</span><br />
                             @php
                                 $status = $mankementje['status'];
                                 $status = strtolower($status);
@@ -48,6 +45,9 @@
                                     case 'opgelost':
                                         $colour = 'green';
                                         break;
+                                    case 'onderhoud':
+                                        $colour = 'blue';
+                                        break;
                                     default:
                                         $colour = 'orange';
                                         break;
@@ -56,6 +56,10 @@
                             <span class='mankementje-status {{ $colour }}'
                                 title="{{ $statusObj['description'] }}"><i
                                     class="bi bi-circle-fill"></i>&nbsp;{{ $mankementje['status'] }}</span>
+                    </div>
+                    <div class='col-4 mankementje-comments'>
+                        <div class="row">
+
                         </div>
                         <div class="row mt-3">
                             @php

@@ -13,18 +13,21 @@
         <span><b>Lid sinds:</b>
             {{ \App\Http\Controllers\DateController::renderFullDate(Auth::user()->created_at) }}</span><br>
     </div>
-    <div class="row mt-5">
-        <h3>Mijn mankementjes</h3>
-        <x-mankement-list :mankementjes="$mankementjes" />
-    </div>
+
     <div class="row mt-3">
         <div class="col-12 col-md-3">
             <div class="btn-group" role="group">
                 <a href="/me/logout" class="btn btn-danger">Uitloggen</a>
-                <a href="/me/edit" class="btn btn-warning">Gegevens wijzigen</a>
+                {{-- <a href="/me/edit" class="btn btn-warning">Gegevens wijzigen</a> --}}
             </div>
         </div>
     </div>
+
+    <div class="row mt-5">
+        <h3>Mijn mankementjes</h3>
+        <x-mankement-list :mankementjes="$mankementjes" />
+    </div>
+
 
 </div>
 
