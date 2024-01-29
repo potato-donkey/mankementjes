@@ -75,11 +75,7 @@ a.mankementje .card:hover {
 }
 
 .mankementje-status.orange {
-<<<<<<< HEAD
     color: #ff7300;
-=======
-    color: #ff6600;
->>>>>>> 229b4d1c796af044ae696c31c0b1377c8eafb09e
 }
 
 .c-alert {
@@ -117,11 +113,6 @@ a.mankementje .card:hover {
     object-position: center;
 }
 
-<<<<<<< HEAD
-.mh-60 {
-    max-height: 60%;
-}
-=======
 .w-100 {
     width: 100%;
 }
@@ -152,4 +143,3 @@ a.mankementje .card:hover {
 .header-mt > h6 {
     margin-top: 1rem;
 }
->>>>>>> 229b4d1c796af044ae696c31c0b1377c8eafb09e
