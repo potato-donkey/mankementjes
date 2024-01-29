@@ -44,7 +44,7 @@
     <div class="row">
         <div class="col-12 col-md-8">
             <img class="img of-c op-c w-100 mh-60 rounded mb-2 bg-black" src="{{ $mankementje['image'] }}">
-            <h2>{{ $mankementje['location'] }} - {{ $mankementje['title'] }}</h2>
+            <h2>{{ $location['location'] }} - {{ $mankementje['title'] }}</h2>
             <span class="mankementje-datum">Gemeld op {{ $mankementje['date'] }} door
                 @if ($user)
                     {{ $user['name'] }}
@@ -87,8 +87,33 @@
                 @guest
                     <span class="mt-3"><a href="/me/login">Log in</a> om te reageren.</span>
                 @endguest
+
+    @php
+    $coords = [];
+        if($location['longitude']) {
+            $coords = "[" . $location['latitude'] . ", " . $location['longitude'] . "]";
+        } else {
+            $coords = "[51.6501, 5.0519]";
+        }
+    @endphp
+    @if($location['longitude'])
+                <div id="map" class="mt-3">
+                </div>
+                @endif
         </div>
     </div>
 </div>
+
+<script>
+    const map = L.map('map').setView({{$coords}}, 15);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    L.marker({{ $coords }}).addTo(map);
+
+    console.log({{ $coords }})
+</script>
 
 <x-footer />
