@@ -8,6 +8,10 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="/archief" class="nav-link">Archief</a></li>
                     @auth
+                        <li class="nav-item"><a href="/melden" class="nav-link">Melden</a></li>
+                    @endauth
+
+                    @auth
                         @if (Auth::user()->id == 0)
                             <li class="nav-item"><a href="/admin" class="nav-link">Administratie</a></li>
                         @endif
