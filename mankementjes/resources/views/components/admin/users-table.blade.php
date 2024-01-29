@@ -1,4 +1,5 @@
-<table class="table table-striped table-hover">
+<input type=text class="form-control" id="searchUsers" placeholder="Zoeken in ID, naam of e-mailadres">
+<table class="table table-striped table-hover" id="{{ $tableid }}">
     <thead>
         <tr>
             <th>ID</th>

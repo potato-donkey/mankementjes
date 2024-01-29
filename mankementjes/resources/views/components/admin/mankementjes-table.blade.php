@@ -1,6 +1,8 @@
-<table class="table table-striped table-hover mankementjes-table">
+<input type=text class="form-control" id="searchMankementjes" placeholder="Zoeken in park, locatie of titel">
+<table class="table table-striped table-hover mankementjes-table" id="{{ $tableid }}">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Park</th>
             <th>Locatie</th>
             <th>Titel</th>
@@ -19,6 +21,7 @@
                 $user = \App\Models\User::where('id', '=', $mankement->user_id)->first();
             @endphp
             <tr>
+                <td>{{ $mankement->id }}</td>
                 <td>{{ $park->name }} ({{ $park->identifier }})</td>
                 <td>{{ $location->location }} ({{ $location->id }})</td>
                 <td>{{ $mankement->title }}</td>
