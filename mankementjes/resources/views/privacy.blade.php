@@ -32,7 +32,7 @@
             zo te voorkomen dat er gegevens over kinderen verzameld worden zonder ouderlijke toestemming. Als je er van
             overtuigd bent dat wij zonder die toestemming persoonlijke gegevens hebben verzameld over een minderjarige,
             neem
-            dan contact met ons op via <a href="mailto:info@mankementjes.nl">info@mankementjes.nl</a>, dan verwijderen
+            dan contact met ons op via <a href="mailto:avg@mankementjes.nl">avg@mankementjes.nl</a>, dan verwijderen
             wij
             deze
             informatie.
@@ -68,7 +68,7 @@
             naar
             jou of een ander, door jou genoemde organisatie, te sturen. Je kunt een verzoek tot inzage, correctie,
             verwijdering, gegevensoverdraging van je persoonsgegevens of verzoek tot intrekking van je toestemming of
-            bezwaar op de verwerking van jouw persoonsgegevens sturen naar <a href="mailto:info@mankementjes.nl">info@mankementjes.nl</a>. We reageren zo
+            bezwaar op de verwerking van jouw persoonsgegevens sturen naar <a href="mailto:avg@mankementjes.nl">avg@mankementjes.nl</a>. We reageren zo
             snel mogelijk, maar binnen vier weken, op jouw verzoek. potato donkey wil je er tevens op wijzen dat je de
             mogelijkheid hebt om een klacht in te dienen bij de nationale toezichthouder, de Autoriteit
             Persoonsgegevens.
@@ -82,7 +82,7 @@
             onbevoegde toegang, ongewenste openbaarmaking en ongeoorloofde wijziging tegen te gaan. Als jij het idee
             hebt
             dat jouw gegevens toch niet goed beveiligd zijn of er aanwijzingen zijn van misbruik, neem dan contact op
-            via <a href="mailto:info@mankementjes.nl">info@mankementjes.nl</a>
+            via <a href="mailto:avg@mankementjes.nl">avg@mankementjes.nl</a>
         </div>
     </div>
 </div>
