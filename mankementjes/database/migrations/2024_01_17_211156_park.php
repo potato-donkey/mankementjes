@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('city');
             $table->string('country');
+            $table->decimal('latitude', 6, 12);
+            $table->decimal('longitude', 6, 12);
             $table->timestamps();
         });
     }

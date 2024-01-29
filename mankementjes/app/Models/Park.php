@@ -14,6 +14,8 @@ class Park extends Model
     public $fillable = [
         'identifier',
         'name',
+        'latitude',
+        'longitude',
     ];
 
     public $primaryKey = 'identifier';
