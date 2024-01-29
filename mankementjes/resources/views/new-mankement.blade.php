@@ -10,7 +10,7 @@
 
 <div class="container mt-5 pt-4">
     <div class="row">
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-6">
             <h2>Mankementje melden</h2>
             <span class="text-muted fst-italic">Meld hier een nieuw mankementje.</span>
 
@@ -43,6 +43,14 @@
                 <button type="submit" class="btn btn-secondary mt-2">Melden</button>
             </form>
         </div>
+        <div class="col col-md-2"></div>
+        <div class="col-12 col-md-4">
+            <h3>Goed om te weten</h3>
+            <ul>
+                <li>Een foto uploaden is momenteel nog niet mogelijk.</li>
+                <li>Kijk voordat je een melding maakt of deze niet al bestaat.</li>
+            </ul>
+            </div>
     </div>
 </div>
 
