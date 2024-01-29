@@ -12,4 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('js/parkFilter.js') }}" defer></script>
+
+    {{-- TODO: Find out why bootstrap doesn't do this --}}
+    <script src="{{ asset('js/navbar-button.js') }}" defer></script>
 </head>
