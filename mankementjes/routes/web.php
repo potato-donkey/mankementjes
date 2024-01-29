@@ -94,7 +94,7 @@ Route::get('mankementje/{id}/solve', function ($id) {
     
     $mankementje = \App\Models\Mankementje::findOrFail($id);
     
-    if($mankementje->user_id != Auth::user()->id) {
+    if($mankementje->user_id != Auth::user()->id && Auth::user()->id != 0) {
         return redirect('/mankementje/' . $mankementje->id);
     }
     
