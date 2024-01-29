@@ -6,6 +6,7 @@
             <th>Titel</th>
             <th>Datum</th>
             <th>Afbeelding</th>
+            <th>Gebruiker</th>
             <th>Status</th>
             <th>Acties</th>
         </tr>
@@ -15,6 +16,7 @@
             @php
                 $park = \App\Models\Park::where('identifier', '=', $mankement->park)->first();
                 $location = \App\Models\Location::where('id', '=', $mankement->location)->first();
+                $user = \App\Models\User::where('id', '=', $mankement->user_id)->first();
             @endphp
             <tr>
                 <td>{{ $park->name }} ({{ $park->identifier }})</td>
@@ -23,12 +25,13 @@
                 <td>{{ $mankement->date }}</td>
                 <td>
                     @if ($mankement->image)
-                        <a href="{{ $mankement->image }}" target="_blank">Afbeelding&nbsp;<i
+                        <a href="{{ $mankement->image }}" target="_blank">Foto&nbsp;<i
                                 class="bi bi-box-arrow-up-right"></i></a>
                     @elseif ($mankement->image == '/assets/noimg.jpg')
                         Geen foto
                     @endif
                 </td>
+                <td>{{ $user->name }} ({{ $user->id }})</td>
                 <td>{{ $mankement->status }}</td>
                 <td class="fs-4">
                     <a title="Bekijken" class="text-success" href="/mankementje/{{ $mankement->id }}"><i
