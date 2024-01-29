@@ -16,5 +16,10 @@
 
         <p class='card-text'>{{ $comment['content'] }}</p>
         <small>{{ \App\Http\Controllers\DateController::renderFullDateWithTime($comment['date']) }}</small>
+        @auth
+            @if($comment['user_id'] == Auth::user()->id || Auth::user()->id == 0)
+                <a title="Verwijderen" class="unstyled" href="/mankementje/{{$mankementje['id']}}/comment/{{$comment['id']}}/delete"><i class="bi bi-trash-fill text-red"></i></a>
+            @endif
+        @endauth
     </div>
 </div>

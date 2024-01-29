@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,23 @@ Route::post('mankementje/{id}/comment', function ($id) {
         'content' => request('comment'),
         'date' => date('m/d/Y H:i:s')
     ]);
+
+    return redirect("/mankementje/$id");
+});
+
+// Delete comment
+Route::get('mankementje/{id}/comment/{comment_id}/delete', function ($id, $comment_id) {
+    if(Auth::guest()) {
+        return redirect('/me/login');
+    }
+    
+    $comment = \App\Models\Comment::findOrFail($comment_id);
+    
+    if(Auth::user()->id != $comment->user_id && Auth::user()->id != 0) {
+        return redirect("/mankementje/$id");
+    }
+    
+    $comment->delete();
 
     return redirect("/mankementje/$id");
 });
